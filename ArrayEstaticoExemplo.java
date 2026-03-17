@@ -1,6 +1,5 @@
 public class ArrayEstaticoExemplo {
     
-}
     public static void main(String[] args) {
         // 1) DECLARACAO: cria a variavel que vai apontar para um array de int.
         int[] numeros;
@@ -15,9 +14,9 @@ public class ArrayEstaticoExemplo {
         System.out.println("Capacidade do array: " + numeros.length);
 
         // 4) INSERIR NO FIM (simples).
-        tamanho = inserirNoFim(numeros, tamanho, 10);
-        tamanho = inserirNoFim(numeros, tamanho, 20);
-        tamanho = inserirNoFim(numeros, tamanho, 30);
+
+
+    
         exibirComIndice(numeros, tamanho);
 
         // 4) INSERIR EM POSICAO (precisa deslocar para a direita).
@@ -51,11 +50,21 @@ public class ArrayEstaticoExemplo {
      * @param valor valor a inserir
      * @return novo tamanho apos a insercao; se estiver cheio, retorna o mesmo tamanho
      */
+''
     public static int inserirNoFim(int[] array, int tamanho, int valor) {
         // Verifica se ha espaco disponivel.
-        if (tamanho >= array.length) {
-            System.out.println("Array cheio. Nao foi possivel inserir " + valor);
+        if (valor < 0) {
+            System.out.println("Numero invalido. Nao foi possivel inserir " + valor);
             return tamanho;
+            
+          }
+          if (estaCheio(array, tamanho)){
+             return tamanho;
+          }
+
+        }
+        if (estaVazio){
+           return;
         }
 
         // Escreve o valor na primeira posicao livre (que e 'tamanho').
@@ -64,6 +73,23 @@ public class ArrayEstaticoExemplo {
         // Retorna o novo tamanho aumentado em 1.
         return tamanho + 1;
     }
+
+    public static boolean estaCheio(int[] array, int tamanho) {
+        if (tamanho >= array.length) {
+            System.out.println("tamanho do array" + array.length);
+            System.out.println("qnt de elementos" + tamanho);
+            System.out.println("Array cheio. Nao foi possivel inserir ");
+        }
+        return true;
+    }
+
+    public static boolean estaVazio(int[] array, int tamanho) {
+        if (array.length < 0) {
+            System.out.println("Array vazio. insira os valores");
+        }
+        return true;
+    }
+
 
     /**
      * Insere um valor em um indice especifico, deslocando os elementos a direita.
@@ -77,8 +103,8 @@ public class ArrayEstaticoExemplo {
      * @return novo tamanho apos a insercao; em caso invalido, retorna o tamanho original
      */
     public static int inserirEmPosicao(int[] array, int tamanho, int indice, int valor) {
-        if (tamanho >= array.length) {
-            System.out.println("Array cheio. Nao foi possivel inserir " + valor);
+
+        if (estaCheio(array, tamanho)) {
             return tamanho;
         }
         if (indice < 0 || indice > tamanho) {
@@ -196,3 +222,4 @@ public class ArrayEstaticoExemplo {
             i++;                    // avanca para o proximo
         }
     }
+}
